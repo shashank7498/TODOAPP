@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+<title>TODO</title>
+<link rel="stylesheet" href="/css/home.css" >
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+<div class="todo-container">
+<h2>To-Do List</h2>
+<div class="todo">
+<form action="/addtask" method="POST" class="todo-header">
+<input type="text" name="task" placeholder="WRITE HERE">
+<input type="date" name="date" required>
+<label for="category"> <h4>Category</h4></label>
+<select id="category" name="category">
+<option value="Primary">Primary</option>
+<option value="Personal">Personal</option>
+<option value="Work">Work</option>
+</select>
+<button type="submit"><span class="fas fa-plus"></span></button>
+</form>
+<ul class="todo-list">
+    <% todoTasks.forEach(details => { %>
+<li class="todo-list-item">
+
+    <button style="margin-right:5px;"><%= details.task %></button>
+    <button style="margin-right:5px;"><%= details.category %></button>
+    <button style="margin-right:5px;"><%= details.date%></button>
+<a href="/edit/<%= details._id %>" class="edit">
+<span class="fas fa-edit"></span>
+</a>
+<a href="/remove/?id=<%= details._id %>" class="remove">
+<span class="fas fa-times"></span>
+</a>
+</li>
+<% }) %>
+</ul>
+</div>
+</div>
+</body>
