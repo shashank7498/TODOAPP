@@ -69,7 +69,7 @@ app.get('/remove',function(req, res) {
     });
   });
 //the server is listening on port 8000 for connections
-app.listen(port, function(err){
+app.listen(process.env.PORT || port, function(err){
     if(err){
         console.log('error');
         return ;
